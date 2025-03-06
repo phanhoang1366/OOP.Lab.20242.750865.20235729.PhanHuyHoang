@@ -1,0 +1,13 @@
+1. What happens if users choose “Cancel”?
+Because the option variable is set to JOptionPane.CANCEL_OPTION, the check if option is equal to JOptionPane.OK_OPTION will return false, and the program will print “You've chosen: No”. To fix this, the program can check additionally check if option is equal to JOptionPane.CANCEL_OPTION and, as the repository suggests, exit with code 1.
+
+2. How to customize the options to users, e.g. only two options: “Yes” and “No”, OR “I do” and “I don’t”
+To customize the options, the program can use the showOptionDialog with the following parameters:
+- parentComponent: null
+- message: "Do you want to change to the first class ticket?"
+- title: "Choose an option"
+- optionType: JOptionPane.YES_NO_OPTION
+- messageType: JOptionPane.QUESTION_MESSAGE
+- options: new Object[] {"Yes", "No"}
+- initialValue: 0
+This will create a dialog with only two options: "Yes" and "No".
