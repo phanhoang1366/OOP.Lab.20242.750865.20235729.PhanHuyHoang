@@ -8,6 +8,7 @@ To customize the options, the program can use the showOptionDialog with the foll
 - title: "Choose an option"
 - optionType: JOptionPane.YES_NO_OPTION
 - messageType: JOptionPane.QUESTION_MESSAGE
-- options: new Object[] {"Yes", "No"}
+- icon: null
+- options: new Object[] {"I do", "I don't"}
 - initialValue: 0
-This will create a dialog with only two options: "Yes" and "No".
+This will create a dialog with only two options: "I do" and "I don't".
