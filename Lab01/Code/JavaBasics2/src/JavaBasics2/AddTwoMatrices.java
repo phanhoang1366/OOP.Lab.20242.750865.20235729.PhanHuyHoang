@@ -29,19 +29,24 @@ public class AddTwoMatrices {
 		}
 		
 		int[][] sum = new int[rows][columns];
+		int total = 0;
         for (int i = 0; i < rows; i++){
             for (int j = 0; j < columns; j++){
                 sum[i][j] = mat1[i][j] + mat2[i][j];
+                total += sum[i][j];
             }
         }
         
         System.out.println("The result:");
         for (int i = 0; i < rows; i++){
             for (int j = 0; j < columns; j++){
-                System.out.print(sum[i][j] + " ");
+                System.out.print(sum[i][j] + "\t");
             }
             System.out.println();
         }
+        
+        Double avgDouble = (double) (total / (rows * columns));
+        System.out.println("Sum:" + total + "\t Average:" + avgDouble);
         
         kb.close();
 	}

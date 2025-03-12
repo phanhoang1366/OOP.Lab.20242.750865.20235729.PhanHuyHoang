@@ -27,7 +27,7 @@ public class LinearSystem {
 		} else {
 			double x = d1 / d;
 			double y = d2 / d;
-			JOptionPane.showMessageDialog(null, "x = " + x + " and y = " + y);
+			JOptionPane.showMessageDialog(null, "x1 = " + x + " and x2 = " + y);
 		}
 	}
 }

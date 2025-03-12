@@ -24,7 +24,7 @@ hs_err_pid*
 replay_pid*
 
 # actually you know what, ignore every folder called Results
-Lab*/Results/
+Lab*/Results/*
 
 # but don't ignore Results/Result.pdf
 !Lab*/Results/Result.pdf
