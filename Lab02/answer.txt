@@ -1,0 +1,3 @@
+1. If you create a constructor method to build a DVD by title then create a constructor method to build a DVD by category. Does Java allow you to do this?
+
+Answer: Yes, Java allows you to create multiple constructors in a class. The constructors must have different parameters. The constructors are differentiated by the number of parameters or the data type of the parameters.
