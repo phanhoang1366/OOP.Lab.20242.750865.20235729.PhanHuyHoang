@@ -2,7 +2,7 @@ public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
     public static final int DELTA_ALMOST_FULL = 5;
 
-    private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
+    private DigitalVideoDisc[] itemsOrdered = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
     private int qtyOrdered = 0;
 
     public void addDigitalVideoDisc(DigitalVideoDisc disc) {
@@ -14,6 +14,12 @@ public class Cart {
         System.out.println("The disc has been added");
         if (qtyOrdered > MAX_NUMBERS_ORDERED - DELTA_ALMOST_FULL) {
             System.out.println("The cart is almost full");
+        }
+    }
+
+    public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList) {
+        for (DigitalVideoDisc disc : dvdList) {
+            addDigitalVideoDisc(disc);
         }
     }
 
@@ -39,7 +45,7 @@ public class Cart {
         System.out.println("***********************CART***********************");
         for (int i = 0; i < qtyOrdered; i++) {
             DigitalVideoDisc disc = itemsOrdered[i];
-            System.out.printf("%d. %-39s - %.2f%n", i + 1, disc.getTitle(), disc.getCost());
+            System.out.printf("%2d. %-38s - %.2f%n", i + 1, disc.getTitle(), disc.getCost());
         }
         System.out.println("**************************************************");
     }
