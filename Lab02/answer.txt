@@ -5,3 +5,11 @@ Answer: Yes, Java allows you to create multiple constructors in a class. The con
 2. Is Java a Pass by Value or a Pass by Reference programming language? (Already answered in the PDF)
 
 Answer: Java is a pass by value programming language. In Java, the actual parameter is passed to the method. The method receives a copy of the actual parameter. The changes made to the parameter inside the method do not affect the actual parameter.
+
+3. After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?
+
+Answer: The title of the two objects remains the same because Java is a pass by value programming language. When the swap method is called, the references to the objects are passed by value. Therefore, any changes made to the references inside the swap method do not affect the original references outside the method.
+
+4. After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
+
+Answer: The title of the JungleDVD is changed because the changeTitle method takes a reference to the object as a parameter. When the method is called, the reference to the jungleDVD object is passed, and any changes made to the title inside the method affect the original object.
