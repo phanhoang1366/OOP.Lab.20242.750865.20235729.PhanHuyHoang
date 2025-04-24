@@ -39,25 +39,20 @@ public class Aims {
 
         anOrder.displayCart();
 
-        System.out.printf("Total cost is: %.2f\n", anOrder.totalCost());
-
         for (DigitalVideoDisc dvd : dvds) {
             anOrder.removeDigitalVideoDisc(dvd);
         }
         
         anOrder.displayCart();
-        System.out.printf("Total cost is: %.2f\n", anOrder.totalCost());
 
         // Add an array of DVDs
         anOrder.addDigitalVideoDisc(dvds);
 
         anOrder.displayCart();
-        System.out.printf("Total cost is: %.2f\n", anOrder.totalCost());
 
         // Remove a DVD
         anOrder.removeDigitalVideoDisc(dvds[0]);
 
         anOrder.displayCart();
-        System.out.printf("Total cost is: %.2f\n", anOrder.totalCost());
     }
 }
