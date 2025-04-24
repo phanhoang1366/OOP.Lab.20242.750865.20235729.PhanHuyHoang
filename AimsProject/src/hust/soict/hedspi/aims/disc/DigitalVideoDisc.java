@@ -9,6 +9,10 @@ public class DigitalVideoDisc {
     private int length;
     private float cost;
 
+    public int getId() {
+        return id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -85,6 +89,26 @@ public class DigitalVideoDisc {
         this.cost = cost;
         this.id = nbDigitalVideoDiscs.getNbDiscs();
         nbDigitalVideoDiscs.increment();
+    }
+
+    public String toString() {
+        StringBuilder result = new StringBuilder("DVD - ");
+        result.append(getTitle());
+        if (getCategory() != null) {
+            result.append(" - ").append(getCategory());
+        }
+        if (getDirector() != null) {
+            result.append(" - ").append(getDirector());
+        }
+        if (getLength() > 0) {
+            result.append(" - ").append(getLength());
+        }
+        result.append(": ").append(getCost()).append(" $");
+        return result.toString();
+    }
+
+    public boolean isMatch(String title) {
+        return this.title.toLowerCase().contains(title.toLowerCase());
     }
 
     public static class nbDigitalVideoDiscs {
