@@ -1,5 +1,7 @@
 package hust.soict.hedspi.aims.media;
 
 public interface Playable {
-    void play();
+    default void play() {
+        System.out.println("Playing media...");
+    }
 }

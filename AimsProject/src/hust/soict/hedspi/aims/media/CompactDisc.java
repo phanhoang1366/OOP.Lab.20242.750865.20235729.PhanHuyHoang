@@ -88,6 +88,10 @@ public class CompactDisc extends Disc implements Playable {
     public CompactDisc(String title, String category, String director, float cost) {
         super(title, category, director, cost);
     }
+    public CompactDisc(String title, String category, float cost, String director, String artist) {
+        super(title, category, director, cost);
+        this.Artist = artist;
+    }
 
     public CompactDisc(String title, String category, String director, int length, float cost) {
         super(title, category, director, length, cost);
