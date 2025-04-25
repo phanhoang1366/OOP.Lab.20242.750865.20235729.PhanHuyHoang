@@ -1,6 +1,11 @@
 package hust.soict.hedspi.aims.media;
 
-public class DigitalVideoDisc extends Disc {
+public class DigitalVideoDisc extends Disc implements Playable {
+
+    public void play() {
+        System.out.println("Playing DVD: " + getTitle());
+        System.out.println("DVD length: " + getLength() + " minutes");
+    }
 
     public DigitalVideoDisc(String title) {
         super(title);
