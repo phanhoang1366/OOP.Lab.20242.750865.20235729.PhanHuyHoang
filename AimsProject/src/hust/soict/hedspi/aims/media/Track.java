@@ -9,6 +9,17 @@ public class Track implements Playable {
         System.out.println("Track length: " + length + " minutes");
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Track track = (Track) obj;
+
+        if (length != track.length) return false;
+        return title != null ? title.equals(track.title) : track.title == null;
+    }
+
     public Track(String title, int length) {
         this.title = title;
         this.length = length;

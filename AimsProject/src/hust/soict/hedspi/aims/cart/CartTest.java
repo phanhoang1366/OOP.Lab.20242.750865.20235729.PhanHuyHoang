@@ -10,16 +10,16 @@ public class CartTest {
         DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 124, 24.95f);
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladdin", "Animation", 18.99f);
 
-        cart.addDigitalVideoDisc(dvd1);
-        cart.addDigitalVideoDisc(dvd2);
-        cart.addDigitalVideoDisc(dvd3);
+        cart.addMedia(dvd1);
+        cart.addMedia(dvd2);
+        cart.addMedia(dvd3);
 
         cart.displayCart();
 
         cart.searchByID(2);
         cart.searchByID(5);
 
-        cart.removeDigitalVideoDisc(dvd2);
+        cart.removeMedia(dvd2);
         cart.searchByID(1); // Try to search for the removed DVD
 
         cart.searchByTitle("lion king");

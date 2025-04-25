@@ -10,10 +10,6 @@ public abstract class Media {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -26,16 +22,8 @@ public abstract class Media {
         return category;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public float getCost() {
         return cost;
-    }
-
-    public void setCost(float cost) {
-        this.cost = cost;
     }
 
     public static class nbMedia {
@@ -54,6 +42,15 @@ public abstract class Media {
         return this.title.toLowerCase().contains(title.toLowerCase());
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Media media = (Media) obj;
+
+        return title != null ? title.equals(media.title) : media.title == null;
+    }
 
     Media(String title) {
         this.title = title;

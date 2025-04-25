@@ -34,24 +34,24 @@ public class Aims {
         };
 
         for (DigitalVideoDisc dvd : dvds) {
-            anOrder.addDigitalVideoDisc(dvd);
+            anOrder.addMedia(dvd);
         }
 
         anOrder.displayCart();
 
         for (DigitalVideoDisc dvd : dvds) {
-            anOrder.removeDigitalVideoDisc(dvd);
+            anOrder.removeMedia(dvd);
         }
         
         anOrder.displayCart();
 
         // Add an array of DVDs
-        anOrder.addDigitalVideoDisc(dvds);
+        anOrder.addMedia(dvds);
 
         anOrder.displayCart();
 
         // Remove a DVD
-        anOrder.removeDigitalVideoDisc(dvds[0]);
+        anOrder.removeMedia(dvds[0]);
 
         anOrder.displayCart();
     }

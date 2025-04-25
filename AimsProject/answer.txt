@@ -13,3 +13,22 @@ Answer: The title of the two objects remains the same because Java is a pass by 
 4. After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
 
 Answer: The title of the JungleDVD is changed because the changeTitle method takes a reference to the object as a parameter. When the method is called, the reference to the jungleDVD object is passed, and any changes made to the title inside the method affect the original object.
+
+5. Which classes are aggregates of other classes?
+Answer:
+
+CompactDisc:
+   - Aggregates Track objects.
+   - The tracks list is initialized in the class, and methods like addTrack and removeTrack manage the Track objects.
+
+Book:
+   - Aggregates String objects representing authors.
+   - The authors list is initialized in the class, and methods like addAuthor and removeAuthor manage the authors.
+
+Cart:
+   - Aggregates Media objects.
+   - The itemsOrdered list is initialized in the class, and methods like addMedia and removeMedia manage the Media objects.
+
+Store:
+   - Aggregates Media objects.
+   - The itemsInStore list is initialized in the class, and methods like addMedia and removeMedia manage the Media objects.
