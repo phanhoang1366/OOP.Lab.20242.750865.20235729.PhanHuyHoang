@@ -1,12 +1,12 @@
 package hust.soict.hedspi.aims.cart;
 
-import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
     public static final int DELTA_ALMOST_FULL = 5;
 
-    private DigitalVideoDisc[] itemsOrdered = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
+    private final DigitalVideoDisc[] itemsOrdered = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
     private int qtyOrdered = 0;
 
     public void addDigitalVideoDisc(DigitalVideoDisc disc) {
