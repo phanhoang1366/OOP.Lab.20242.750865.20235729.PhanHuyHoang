@@ -3,7 +3,7 @@ package hust.soict.hedspi.aims.media;
 import java.util.Objects;
 
 public abstract class Media {
-    private int id;
+    private final int id;
     private String title;
     private String category;
     private float cost;
