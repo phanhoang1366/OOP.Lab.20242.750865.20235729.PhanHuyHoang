@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CompactDisc extends Disc {
     private String Artist;
-    private final List<Track> tracks = new ArrayList<Track>();
+    private final List<Track> tracks = new ArrayList<>();
 
     public String getArtist() {
         return Artist;

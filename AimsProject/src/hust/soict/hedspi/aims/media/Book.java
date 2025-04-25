@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Book extends Media {
-    private final List<String> authors = new ArrayList<String>();
+    private final List<String> authors = new ArrayList<>();
 
     public void addAuthor(String author) {
         if (!this.authors.contains(author)) {

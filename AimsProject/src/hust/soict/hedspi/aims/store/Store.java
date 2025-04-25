@@ -4,7 +4,7 @@ import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 
 public class Store {
     public final int MAX_NUMBERS_DVD = 100;
-    private DigitalVideoDisc[] itemsInStore;
+    private final DigitalVideoDisc[] itemsInStore;
     private int totalDVDs = 0;
 
     public Store() {
