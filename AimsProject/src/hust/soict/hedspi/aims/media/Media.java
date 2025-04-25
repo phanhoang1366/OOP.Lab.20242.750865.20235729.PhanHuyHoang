@@ -1,7 +1,9 @@
 package hust.soict.hedspi.aims.media;
 
+import java.util.Objects;
+
 public abstract class Media {
-    private int id;
+    private final int id;
     private String title;
     private String category;
     private float cost;
@@ -49,7 +51,7 @@ public abstract class Media {
 
         Media media = (Media) obj;
 
-        return title != null ? title.equals(media.title) : media.title == null;
+        return Objects.equals(title, media.title);
     }
 
     Media(String title) {

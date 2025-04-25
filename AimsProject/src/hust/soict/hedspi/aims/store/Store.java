@@ -13,6 +13,26 @@ public class Store {
         itemsInStore = new ArrayList<>();
     }
 
+    public void displayStore() {
+        System.out.println("***********************STORE***********************");
+        System.out.println("Items in store:");
+        for (int i = 0; i < totalDVDs; i++) {
+            Media media = itemsInStore.get(i);
+            System.out.printf("%2d. %s\n", i + 1, media.toString());
+        }
+        System.out.println("**************************************************");
+    }
+
+    public ArrayList<Media> searchByTitle(String title) {
+        ArrayList<Media> foundItems = new ArrayList<>();
+        for (Media media : itemsInStore) {
+            if (media.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                foundItems.add(media);
+            }
+        }
+        return foundItems;
+    }
+
     public void addMedia(Media media) {
         if (totalDVDs < MAX_NUMBERS_DVD) {
             itemsInStore.add(media);

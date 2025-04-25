@@ -10,7 +10,7 @@ import java.util.Comparator;
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
     public static final int DELTA_ALMOST_FULL = 5;
-    private ArrayList<Media> itemsOrdered = new ArrayList<>();
+    private final ArrayList<Media> itemsOrdered = new ArrayList<>();
 
     public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
     public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
@@ -71,19 +71,19 @@ public class Cart {
                 return;
             }
         }
-        System.out.println("Cannot find any DVD with ID " + id);
+        System.out.println("Cannot find any items in cart with ID " + id);
     }
 
     public void searchByTitle(String title) {
         boolean found = false;
         for (int i = 0; i < qtyOrdered; i++) {
-            if (itemsOrdered.get(i).isMatch(title)) {
+            if (itemsOrdered.get(i).getTitle().toLowerCase().contains(title.toLowerCase())) {
                 System.out.println("Found: " + itemsOrdered.get(i));
                 found = true;
             }
         }
         if(!found)
-            System.out.println("Cannot find any DVD with title: " + title);
+            System.out.println("Cannot find any items in cart with title: " + title);
     }
 
     public void sortByTitleCost() {
@@ -93,5 +93,10 @@ public class Cart {
     public void sortByCostTitle() {
         itemsOrdered.sort(COMPARE_BY_COST_TITLE);
     }
+
+    public ArrayList<Media> getItemsOrdered() {
+        return itemsOrdered;
+    }
+
 
 }
