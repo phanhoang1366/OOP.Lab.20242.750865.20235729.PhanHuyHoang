@@ -32,3 +32,36 @@ Cart:
 Store:
    - Aggregates Media objects.
    - The itemsInStore list is initialized in the class, and methods like addMedia and removeMedia manage the Media objects.
+
+
+Alternatively, to compare items in the cart, instead of using the Comparator class I have mentioned, you can use the Comparable interface and override the compareTo() method. You can refer to the Java docs to see the information of this interface.
+Suppose we are taking this Comparable interface approach.
+6. What class should implement the Comparable interface?
+Answer: The Media class should implement the Comparable interface. This allows the Media objects to be compared based on their titles, which is useful for sorting and searching in the cart and store.
+
+7. In those classes, how should you implement the compareTo() method to reflect the ordering that we want?
+Answer: In the Media class, the compareTo() method should compare the titles of the Media objects. The method should return a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object. Notice that compareTo() method only compares one attribute of the Media class, which is the title.
+
+8. Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?
+Answer: Sadly, we cannot have two ordering rules using the Comparable interface approach. The compareTo() method can only implement one ordering rule. If we want to have multiple ordering rules, we can create separate Comparator classes for each ordering rule and use them when sorting or comparing Media objects.
+
+9. Suppose the DVDs have a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+Answer:
+```java
+@Override
+public int compareTo(Media other) {
+    if (this instanceof DVD && other instanceof DVD) {
+        DVD thisDVD = (DVD) this;
+        DVD otherDVD = (DVD) other;
+        int titleComparison = thisDVD.getTitle().compareTo(otherDVD.getTitle());
+        if (titleComparison != 0) {
+            return titleComparison;
+        }
+        // Compare by length in decreasing order
+        return Integer.compare(otherDVD.getLength(), thisDVD.getLength());
+    } else {
+        // Default comparison for other media types
+        return this.title.compareTo(other.title);
+    }
+}
+```

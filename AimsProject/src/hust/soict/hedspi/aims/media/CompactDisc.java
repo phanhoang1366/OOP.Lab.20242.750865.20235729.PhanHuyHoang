@@ -44,8 +44,37 @@ public class CompactDisc extends Disc implements Playable {
         return totalLength;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("CD - ");
+        if (getArtist() != null) {
+            sb.append(getArtist()).append(" - ");
+        }
+        sb.append(getTitle());
+        if (getCategory() != null) {
+            sb.append(" - ").append(getCategory());
+        }
+        if (getDirector() != null) {
+            sb.append(" - ").append(getDirector());
+        }
+        if (getLength() > 0) {
+            sb.append(" - ").append(getLength());
+        }
+        sb.append(": ").append(getCost()).append(" $");
+        return sb.toString();
+    }
+
     public CompactDisc(String title) {
         super(title);
+    }
+
+    public CompactDisc(String title, String category) {
+        super(title, category);
+    }
+
+    public CompactDisc(String title, String category, String artist) {
+        super(title, category);
+        this.Artist = artist;
     }
 
     public CompactDisc(String title, float cost) {

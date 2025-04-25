@@ -23,6 +23,9 @@ public class Disc extends Media {
     public Disc(String title) {
         super(title, 0);
     }
+    public Disc(String title, String category) {
+        super(title, category, 0);
+    }
     public Disc(String title, float cost) {
         super(title, cost);
     }

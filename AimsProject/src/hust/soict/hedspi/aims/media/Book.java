@@ -24,6 +24,23 @@ public class Book extends Media {
         }
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("Book - ");
+        if (!authors.isEmpty()) {
+            sb.append(String.join(", ", authors)).append(" - ");
+        }
+        sb.append(getTitle());
+        if (getCategory() != null) {
+            sb.append(" - ").append(getCategory());
+        }
+        if (getCost() > 0) {
+            sb.append(" - ").append(getCost()).append(" $");
+        }
+
+        return sb.toString();
+    }
+
     public Book(String title) {
         super(title);
     }
