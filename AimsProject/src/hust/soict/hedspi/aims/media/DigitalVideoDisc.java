@@ -11,16 +11,8 @@ public class DigitalVideoDisc extends Disc implements Playable {
         super(title);
     }
 
-    public DigitalVideoDisc(String title, float cost) {
-        super(title, cost);
-    }
-
     public DigitalVideoDisc(String title, String category, float cost) {
         super(title, category, cost);
-    }
-
-    public DigitalVideoDisc(String title, String category, String director, float cost) {
-        super(title, category, director, cost);
     }
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
@@ -37,7 +29,7 @@ public class DigitalVideoDisc extends Disc implements Playable {
             result.append(" - ").append(getDirector());
         }
         if (getLength() > 0) {
-            result.append(" - ").append(getLength());
+            result.append(" - ").append(getLength()).append(" minutes");
         }
         result.append(": ").append(getCost()).append(" $");
         return result.toString();

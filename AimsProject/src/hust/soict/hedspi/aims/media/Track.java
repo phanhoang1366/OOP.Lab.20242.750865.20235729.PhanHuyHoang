@@ -1,12 +1,20 @@
 package hust.soict.hedspi.aims.media;
 
+import java.util.Objects;
+
 public class Track implements Playable {
-    private String title;
-    private int length;
+    private final String title;
+    private final int length; // in seconds
 
     public void play() {
         System.out.println("Playing track: " + title);
-        System.out.println("Track length: " + length + " minutes");
+        System.out.println("Track length: " + calculateLength());
+    }
+
+    public String calculateLength() {
+        int minutes = length / 60;
+        int seconds = length % 60;
+        return String.format("%d:%02d", minutes, seconds);
     }
 
     @Override
@@ -17,7 +25,7 @@ public class Track implements Playable {
         Track track = (Track) obj;
 
         if (length != track.length) return false;
-        return title != null ? title.equals(track.title) : track.title == null;
+        return Objects.equals(title, track.title);
     }
 
     public Track(String title, int length) {
@@ -29,16 +37,8 @@ public class Track implements Playable {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public int getLength() {
         return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
     }
 
 }

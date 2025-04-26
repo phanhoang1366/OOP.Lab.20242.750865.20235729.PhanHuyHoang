@@ -30,12 +30,6 @@ public class Cart {
         }
     }
 
-    public void addMedia(Media[] mediaList) {
-        for (Media media : mediaList) {
-            addMedia(media);
-        }
-    }
-
     public void removeMedia(Media media) {
         if (itemsOrdered.remove(media)) {
             qtyOrdered--;
@@ -47,12 +41,16 @@ public class Cart {
 
     public void displayCart() {
         System.out.println("***********************CART***********************");
-        System.out.println("Ordered items:");
-        for (int i = 0; i < qtyOrdered; i++) {
-            Media media = itemsOrdered.get(i);
-            System.out.printf("%2d. %s\n", i + 1, media.toString());
+        if (qtyOrdered > 0) {
+            System.out.println("Ordered items:");
+            for (int i = 0; i < qtyOrdered; i++) {
+                Media media = itemsOrdered.get(i);
+                System.out.printf("%2d. %s\n", i + 1, media.toString());
+            }
+            System.out.printf("Total cost: %.2f $\n", totalCost());
+        } else {
+            System.out.println("The cart is empty.");
         }
-        System.out.printf("Total cost: %.2f $\n", totalCost());
         System.out.println("**************************************************");
     }
 
