@@ -41,7 +41,7 @@ public class CompactDisc extends Disc implements Playable {
         for (Track track : tracks) {
             totalLength += track.getLength();
         }
-        return totalLength;
+        return totalLength / 60; // Convert seconds to minutes
     }
 
     @Override
