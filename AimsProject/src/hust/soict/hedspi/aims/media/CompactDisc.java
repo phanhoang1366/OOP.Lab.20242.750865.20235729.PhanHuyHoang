@@ -1,5 +1,7 @@
 package hust.soict.hedspi.aims.media;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +35,32 @@ public class CompactDisc extends Disc implements Playable {
         for (Track track : tracks) {
             track.play();
         }
+    }
+
+    public void playFromGUI() {
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Play CD");
+        dialog.setModal(true);
+        dialog.setType(Window.Type.UTILITY);
+        JLabel label = new JLabel("Select a track to play:");
+        JComboBox<Track> trackComboBox = new JComboBox<>(tracks.toArray(new Track[0]));
+        JButton playButton = new JButton("Play");
+        playButton.addActionListener(e -> {
+            Track selectedTrack = (Track) trackComboBox.getSelectedItem();
+            if (selectedTrack != null) {
+                selectedTrack.playFromGUI();
+            }
+        });
+        JPanel panel = new JPanel();
+        panel.add(label);
+        panel.add(trackComboBox);
+        panel.add(playButton);
+        dialog.add(panel);
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.setLocationRelativeTo(null);
+        dialog.pack();
+        dialog.setVisible(true);
+        dialog.dispose();
     }
 
     @Override
