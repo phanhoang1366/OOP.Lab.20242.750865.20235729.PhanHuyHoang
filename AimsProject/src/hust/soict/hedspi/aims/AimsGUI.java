@@ -5,13 +5,9 @@ import hust.soict.hedspi.aims.media.*;
 import hust.soict.hedspi.aims.screen.manager.StoreManagerScreen;
 import hust.soict.hedspi.aims.store.Store;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class AimsGUI {
 	private static final Store store = new Store();
-    private static Cart cart = new Cart();
-
+    private static final Cart cart = new Cart();
 
     public static void storeSetup() {
         // DVD

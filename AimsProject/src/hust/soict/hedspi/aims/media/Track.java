@@ -14,18 +14,19 @@ public class Track implements Playable {
     }
 
     public void playFromGUI() {
-        JDialog dialog = new JDialog();
-        dialog.setTitle("Play Track");
-        dialog.setModal(true);
+        JDialog dialog = new JDialog((Frame) null, "Play Track", true);
         dialog.setType(Window.Type.UTILITY);
-        JLabel label = new JLabel("Playing track: " + title + " - " + calculateLength());
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-        dialog.add(label);
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        dialog.setLocationRelativeTo(null);
+        dialog.setLayout(new BorderLayout());
+        dialog.setPreferredSize(new Dimension(300, 100));
+        dialog.setResizable(false);
+
+        JLabel label = new JLabel("Playing track: " + title + " - " + calculateLength(), SwingConstants.CENTER);
+        dialog.add(label, BorderLayout.CENTER);
+
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
-        dialog.dispose();
     }
 
     public String calculateLength() {

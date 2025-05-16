@@ -14,9 +14,12 @@ public class DigitalVideoDisc extends Disc implements Playable {
         JDialog dialog = new JDialog((Frame) null, "Play DVD", true);
         dialog.setType(Window.Type.UTILITY);
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.setLayout(new BorderLayout());
+        dialog.setPreferredSize(new Dimension(300, 100));
+        dialog.setResizable(false);
 
         JLabel label = new JLabel("Playing DVD: " + getTitle() + " - " + getLength() + " minutes", SwingConstants.CENTER);
-        dialog.add(label);
+        dialog.add(label, BorderLayout.CENTER);
 
         dialog.pack();
         dialog.setLocationRelativeTo(null);

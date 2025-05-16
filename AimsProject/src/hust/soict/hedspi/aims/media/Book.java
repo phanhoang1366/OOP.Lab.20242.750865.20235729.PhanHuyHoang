@@ -6,6 +6,15 @@ import java.util.List;
 public class Book extends Media {
     private final List<String> authors = new ArrayList<>();
 
+    public Book(String title, String category, String[] authorList, float costValue) {
+        super(title, category, costValue);
+        if (authorList != null) {
+            for (String author : authorList) {
+                addAuthor(author);
+            }
+        }
+    }
+
     public void addAuthor(String author) {
         if (!this.authors.contains(author)) {
             this.authors.add(author);

@@ -38,11 +38,13 @@ public class CompactDisc extends Disc implements Playable {
     }
 
     public void playFromGUI() {
-        JDialog dialog = new JDialog();
-        dialog.setTitle("Play CD");
-        dialog.setModal(true);
+        JDialog dialog = new JDialog((Frame) null, "Play CD", true);
         dialog.setType(Window.Type.UTILITY);
-        JLabel label = new JLabel("Select a track to play:");
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.setLayout(new BorderLayout());
+        dialog.setResizable(false);
+
+        JLabel label = new JLabel("Select a track to play:", SwingConstants.CENTER);
         JComboBox<Track> trackComboBox = new JComboBox<>(tracks.toArray(new Track[0]));
         JButton playButton = new JButton("Play");
         playButton.addActionListener(e -> {
@@ -51,16 +53,16 @@ public class CompactDisc extends Disc implements Playable {
                 selectedTrack.playFromGUI();
             }
         });
+
         JPanel panel = new JPanel();
         panel.add(label);
         panel.add(trackComboBox);
         panel.add(playButton);
-        dialog.add(panel);
-        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        dialog.setLocationRelativeTo(null);
+        dialog.add(panel, BorderLayout.CENTER);
+
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
-        dialog.dispose();
     }
 
     @Override
