@@ -1,22 +1,15 @@
 package hust.soict.hedspi.aims.screen.manager;
 
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
-import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.store.Store;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class AddDVDScreen extends AIMSScreen {
     private JTextField titleField, categoryField, directorField, lengthField, costField;
-
-    @Override
-    public JPanel createHeader() {
-        return new JPanel();
-    }
 
     JPanel createCenter() {
         JPanel center = new JPanel();

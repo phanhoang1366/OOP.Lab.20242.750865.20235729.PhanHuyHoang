@@ -6,7 +6,6 @@ import hust.soict.hedspi.aims.store.Store;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 public class AddBookScreen extends AIMSScreen{
     private JTextField titleField, categoryField, authorField, costField;
