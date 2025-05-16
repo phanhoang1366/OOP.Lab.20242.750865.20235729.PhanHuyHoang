@@ -240,7 +240,7 @@ public class Aims {
 	    System.out.print("Enter media title: ");
         keyboard.nextLine(); // Consume newline
 	    String title = keyboard.nextLine();
-	    ArrayList<Media> media = store.searchByTitle(title);
+	    ArrayList<Media> media = store.searchByExactTitle(title);
 	    switch (choice) {
 	        case 1:
 	            if (media == null || media.isEmpty()) {

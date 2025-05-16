@@ -33,13 +33,23 @@ public class Store {
         return foundItems;
     }
 
+    public ArrayList<Media> searchByExactTitle(String title) {
+        ArrayList<Media> foundItems = new ArrayList<>();
+        for (Media media : itemsInStore) {
+            if (media.getTitle().equalsIgnoreCase(title)) {
+                foundItems.add(media);
+            }
+        }
+        return foundItems;
+    }
+
     public void addMedia(Media media) {
         if (totalDVDs < MAX_NUMBERS_DVD) {
             itemsInStore.add(media);
             totalDVDs++;
             System.out.println("Added: " + media.getTitle());
         } else {
-            System.out.println("Store is full. Cannot add more items.");
+            throw new IndexOutOfBoundsException("The store is full. Cannot add more items.");
         }
     }
 

@@ -21,19 +21,7 @@ public abstract class AIMSScreen extends JFrame {
     }
 
     public JPanel createHeader() {
-        JPanel header = new JPanel();
-        header.setLayout(new BoxLayout(header, BoxLayout.X_AXIS));
-
-        JLabel title = new JLabel("AIMS");
-        title.setFont(new Font(title.getFont().getName(), Font.PLAIN, 50));
-        title.setForeground(Color.CYAN);
-
-        header.add(Box.createRigidArea(new Dimension(10, 10)));
-        header.add(title);
-        header.add(Box.createHorizontalGlue());
-        header.add(Box.createRigidArea(new Dimension(10, 10)));
-
-        return header;
+        return new JPanel();
     }
 
     public JMenuBar createMenuBar() {

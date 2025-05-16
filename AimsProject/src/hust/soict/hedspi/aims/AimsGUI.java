@@ -10,8 +10,7 @@ import java.util.Scanner;
 
 public class AimsGUI {
 	private static final Store store = new Store();
-    private static Cart cart = new Cart();
-
+    private static final Cart cart = new Cart();
 
     public static void storeSetup() {
         // DVD
