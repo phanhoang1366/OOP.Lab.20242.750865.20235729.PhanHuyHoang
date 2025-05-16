@@ -9,24 +9,18 @@ public interface Playable {
     }
 
     default void playFromGUI() {
-        // JFrame frame = new JFrame("Play Media");
-        // JLabel label = new JLabel("Playing media...");
-        // label.setHorizontalAlignment(SwingConstants.CENTER);
-        // frame.add(label);
-        // frame.setSize(300, 200);
-        // frame.setVisible(true);
-        JDialog dialog = new JDialog();
-        dialog.setTitle("Play Media");
-        dialog.setModal(true);
+        JDialog dialog = new JDialog((Frame) null, "Play Media", true);
         dialog.setType(Window.Type.UTILITY);
-        JLabel label = new JLabel("Playing media...");
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-        dialog.add(label);
-        // dialog.setSize(300, 200);
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        dialog.setLocationRelativeTo(null);
+        dialog.setLayout(new BorderLayout());
+        dialog.setPreferredSize(new Dimension(300, 100));
+        dialog.setResizable(false);
+
+        JLabel label = new JLabel("Playing media...", SwingConstants.CENTER);
+        dialog.add(label, BorderLayout.CENTER);
+
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
-        dialog.dispose();
     }
 }
