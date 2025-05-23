@@ -3,6 +3,8 @@ package hust.soict.hedspi.aims.cart;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.MediaComparatorByCostTitle;
 import hust.soict.hedspi.aims.media.MediaComparatorByTitleCost;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -10,7 +12,8 @@ import java.util.Comparator;
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
     public static final int DELTA_ALMOST_FULL = 5;
-    private final ArrayList<Media> itemsOrdered = new ArrayList<>();
+    // private final ArrayList<Media> itemsOrdered = new ArrayList<>();
+    private final ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
 
     public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
     public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
@@ -92,7 +95,7 @@ public class Cart {
         itemsOrdered.sort(COMPARE_BY_COST_TITLE);
     }
 
-    public ArrayList<Media> getItemsOrdered() {
+    public ObservableList<Media> getItemsOrdered() {
         return itemsOrdered;
     }
 

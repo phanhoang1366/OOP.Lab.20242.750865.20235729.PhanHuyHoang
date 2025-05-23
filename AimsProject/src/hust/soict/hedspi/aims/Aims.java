@@ -11,7 +11,7 @@ public class Aims {
     private static Cart cart = new Cart();
 
 
-    public static void storeSetup() {
+    public static void storeSetup(Store store) {
         // DVD
         DigitalVideoDisc[] dvds = {
             new DigitalVideoDisc("Inception", "Science Fiction", "Christopher Nolan", 148, 15.99f),
@@ -89,7 +89,7 @@ public class Aims {
     }
     
 	public static void main(String[] args) {
-		storeSetup();
+		storeSetup(store);
         // TODO Clear screen after adding media
         System.out.println("Welcome to AIMS");
 		Scanner keyboard = new Scanner(System.in);
