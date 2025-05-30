@@ -1,5 +1,7 @@
 package hust.soict.hedspi.aims.media;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
@@ -8,12 +10,12 @@ public class Track implements Playable {
     private final String title;
     private final int length; // in seconds
 
-    public void play() {
+    public void play() throws PlayerException {
         System.out.println("Playing track: " + title);
         System.out.println("Track length: " + calculateLength());
     }
 
-    public void playFromGUI() {
+    public void playFromGUI() throws PlayerException {
         JDialog dialog = new JDialog((Frame) null, "Play Track", true);
         dialog.setType(Window.Type.UTILITY);
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -21,6 +23,9 @@ public class Track implements Playable {
         dialog.setPreferredSize(new Dimension(300, 100));
         dialog.setResizable(false);
 
+        if (length < 0) {
+            throw new PlayerException("Track length cannot be negative.");
+        }
         JLabel label = new JLabel("Playing track: " + title + " - " + calculateLength(), SwingConstants.CENTER);
         dialog.add(label, BorderLayout.CENTER);
 
@@ -29,7 +34,7 @@ public class Track implements Playable {
         dialog.setVisible(true);
     }
 
-    public String calculateLength() {
+    public String calculateLength() throws PlayerException {
         int minutes = length / 60;
         int seconds = length % 60;
         return String.format("%d:%02d", minutes, seconds);
@@ -48,7 +53,11 @@ public class Track implements Playable {
 
     @Override
     public String toString() {
-        return title + " - " + calculateLength();
+        try {
+            return title + " - " + calculateLength();
+        } catch (PlayerException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Track(String title, int length) {

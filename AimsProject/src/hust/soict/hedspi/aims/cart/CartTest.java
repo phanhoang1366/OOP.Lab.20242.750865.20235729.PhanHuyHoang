@@ -2,6 +2,8 @@ package hust.soict.hedspi.aims.cart;
 
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 
+import javax.naming.LimitExceededException;
+
 public class CartTest {
     public static void main(String[] args) {
         Cart cart = new Cart();
@@ -10,9 +12,13 @@ public class CartTest {
         DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 124, 24.95f);
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladdin", "Animation", 18.99f);
 
-        cart.addMedia(dvd1);
-        cart.addMedia(dvd2);
-        cart.addMedia(dvd3);
+        try {
+            cart.addMedia(dvd1);
+            cart.addMedia(dvd2);
+            cart.addMedia(dvd3);
+        } catch (LimitExceededException e) {
+            System.out.println("Cart limit exceeded: " + e.getMessage());
+        }
 
         cart.displayCart();
 

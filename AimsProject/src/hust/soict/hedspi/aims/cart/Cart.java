@@ -113,5 +113,6 @@ public class Cart {
 
     public void placeOrder() {
         throw new UnsupportedOperationException("Place order functionality is not implemented yet.");
+        // itemsOrdered.clear();
     }
 }

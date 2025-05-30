@@ -1,5 +1,7 @@
 package hust.soict.hedspi.aims.media;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ public class CompactDisc extends Disc implements Playable {
         }
     }
 
-    public void play() {
+    public void play() throws PlayerException {
         System.out.println("Playing CD: " + getTitle());
         System.out.println("CD length: " + getLength() + " minutes");
         for (Track track : tracks) {
@@ -50,7 +52,12 @@ public class CompactDisc extends Disc implements Playable {
         playButton.addActionListener(e -> {
             Track selectedTrack = (Track) trackComboBox.getSelectedItem();
             if (selectedTrack != null) {
-                selectedTrack.playFromGUI();
+                try {
+                    selectedTrack.playFromGUI();
+                } catch (PlayerException ex) {
+                    JOptionPane.showMessageDialog(dialog, "Error playing track: " + ex.getMessage(),
+                            "Playback Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 

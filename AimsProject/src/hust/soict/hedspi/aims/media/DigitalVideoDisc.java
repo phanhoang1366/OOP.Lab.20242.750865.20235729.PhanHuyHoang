@@ -1,16 +1,21 @@
 package hust.soict.hedspi.aims.media;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class DigitalVideoDisc extends Disc implements Playable {
 
-    public void play() {
+    public void play() throws PlayerException {
         System.out.println("Playing DVD: " + getTitle());
+        if (getLength() < 0) {
+            throw new PlayerException("DVD length cannot be negative.");
+        }
         System.out.println("DVD length: " + getLength() + " minutes");
     }
 
-    public void playFromGUI() {
+    public void playFromGUI() throws PlayerException {
         JDialog dialog = new JDialog((Frame) null, "Play DVD", true);
         dialog.setType(Window.Type.UTILITY);
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -18,6 +23,9 @@ public class DigitalVideoDisc extends Disc implements Playable {
         dialog.setPreferredSize(new Dimension(300, 100));
         dialog.setResizable(false);
 
+        if (getLength() < 0) {
+            throw new PlayerException("DVD length cannot be negative.");
+        }
         JLabel label = new JLabel("Playing DVD: " + getTitle() + " - " + getLength() + " minutes", SwingConstants.CENTER);
         dialog.add(label, BorderLayout.CENTER);
 

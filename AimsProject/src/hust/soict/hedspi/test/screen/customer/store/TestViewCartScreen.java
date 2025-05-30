@@ -1,10 +1,6 @@
 package hust.soict.hedspi.test.screen.customer.store;
 
 import hust.soict.hedspi.aims.cart.Cart;
-import hust.soict.hedspi.aims.media.Book;
-import hust.soict.hedspi.aims.media.CompactDisc;
-import hust.soict.hedspi.aims.media.DigitalVideoDisc;
-import hust.soict.hedspi.aims.media.Track;
 import hust.soict.hedspi.aims.screen.customer.controller.CartController;
 import hust.soict.hedspi.aims.store.Store;
 import javafx.application.Application;

@@ -1,14 +1,16 @@
 package hust.soict.hedspi.aims.media;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
+
 import javax.swing.*;
 import java.awt.*;
 
 public interface Playable {
-    default void play() {
+    default void play() throws PlayerException {
         System.out.println("Playing media...");
     }
 
-    default void playFromGUI() {
+    default void playFromGUI() throws PlayerException {
         JDialog dialog = new JDialog((Frame) null, "Play Media", true);
         dialog.setType(Window.Type.UTILITY);
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

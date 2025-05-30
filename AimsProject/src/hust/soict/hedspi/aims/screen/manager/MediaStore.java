@@ -1,5 +1,6 @@
 package hust.soict.hedspi.aims.screen.manager;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
 
@@ -25,7 +26,12 @@ public class MediaStore extends JPanel {
             container.add(playButton);
 
             playButton.addActionListener(e -> {
-                ((Playable) media).playFromGUI();
+                try {
+                    ((Playable) media).playFromGUI();
+                } catch (PlayerException ex) {
+                    JOptionPane.showMessageDialog(this, "Error playing media: " + ex.getMessage(),
+                            "Playback Error", JOptionPane.ERROR_MESSAGE);
+                }
             });
         }
 

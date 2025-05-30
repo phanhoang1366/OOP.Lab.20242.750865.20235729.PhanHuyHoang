@@ -3,8 +3,11 @@ package hust.soict.hedspi.aims;
 import java.util.ArrayList;
 import java.util.Scanner;
 import hust.soict.hedspi.aims.cart.Cart;
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.*;
 import hust.soict.hedspi.aims.store.Store;
+
+import javax.naming.LimitExceededException;
 
 public class Aims {
 	private static final Store store = new Store();
@@ -141,7 +144,11 @@ public class Aims {
                         mediaDetailsMenu();
                         int subChoice = keyboard.nextInt();
                         if (subChoice == 1) {
-                            cart.addMedia(media);
+                            try {
+                                cart.addMedia(media);
+                            } catch (LimitExceededException e) {
+                                System.out.println("Cart limit exceeded: " + e.getMessage());
+                            }
                             if (media instanceof DigitalVideoDisc) {
                                 int dvdCount = 0;
                                 for (Media m : cart.getItemsOrdered()) {
@@ -153,7 +160,11 @@ public class Aims {
                             }
                         } else if (subChoice == 2) {
                             if (media instanceof Playable) {
-                                ((Playable) media).play();
+                                try {
+                                    ((Playable) media).play();
+                                } catch (PlayerException e) {
+                                    System.out.println("Error playing media: " + e.getMessage());
+                                }
                             } else {
                                 System.out.println("This media cannot be played");
                             }
@@ -177,8 +188,12 @@ public class Aims {
                         System.out.print("Enter the index of the media to add to cart: ");
                         int index = keyboard.nextInt();
                         Media mediumToAdd = mediaToAdd.get(index - 1);
-	                    cart.addMedia(mediumToAdd);
-	                    if (mediumToAdd instanceof DigitalVideoDisc) {
+                        try {
+                            cart.addMedia(mediumToAdd);
+                        } catch (LimitExceededException e) {
+                            System.out.println("Cart limit exceeded: " + e.getMessage());
+                        }
+                        if (mediumToAdd instanceof DigitalVideoDisc) {
 	                        int dvdCount = 0;
 	                        for (Media m : cart.getItemsOrdered()) {
 	                            if (m instanceof DigitalVideoDisc) {
@@ -208,8 +223,12 @@ public class Aims {
                         mediumToPlay = mediaToPlay.get(index - 1);
                     }
 	                if (mediumToPlay instanceof Playable) {
-	                    ((Playable) mediumToPlay).play();
-	                } else if (mediumToPlay != null) {
+                        try {
+                            ((Playable) mediumToPlay).play();
+                        } catch (PlayerException e) {
+                            System.out.println("Error playing media: " + e.getMessage());
+                        }
+                    } else if (mediumToPlay != null) {
 	                    System.out.println("This media cannot be played");
 	                } else {
 	                    System.out.println("Media not found");
@@ -379,8 +398,12 @@ public class Aims {
 	                String playTitle = keyboard.nextLine();
 	                for (Media m : new ArrayList<>(cart.getItemsOrdered())) {
 	                    if (m.getTitle().equalsIgnoreCase(playTitle) && m instanceof Playable) {
-	                        ((Playable) m).play();
-	                        break;
+                            try {
+                                ((Playable) m).play();
+                            } catch (PlayerException e) {
+                                System.out.println("Error playing media: " + e.getMessage());
+                            }
+                            break;
 	                    }
 	                }
 	                break;

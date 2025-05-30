@@ -51,7 +51,18 @@ public abstract class Media {
 
         Media media = (Media) obj;
 
-        return Objects.equals(title, media.title);
+        return Objects.equals(title, media.title) &&
+               Float.compare(media.cost, cost) == 0;
+    }
+
+    public int compareTo(Media other) {
+        if (this.title != null && other.title != null) {
+            int titleComparison = this.title.compareTo(other.title);
+            if (titleComparison != 0) {
+                return titleComparison;
+            }
+        }
+        return Float.compare(this.cost, other.cost);
     }
 
     Media(String title) {
