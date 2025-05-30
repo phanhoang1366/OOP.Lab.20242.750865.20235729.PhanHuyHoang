@@ -6,7 +6,7 @@ import hust.soict.hedspi.aims.media.MediaComparatorByTitleCost;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
+import javax.naming.LimitExceededException;
 import java.util.Comparator;
 
 public class Cart {
@@ -20,16 +20,17 @@ public class Cart {
 
     private int qtyOrdered = 0;
 
-    public void addMedia(Media media) {
+    public void addMedia(Media media) throws LimitExceededException {
         if (qtyOrdered < MAX_NUMBERS_ORDERED) {
             itemsOrdered.add(media);
             qtyOrdered++;
             System.out.println("Added: " + media);
-            if (qtyOrdered >= MAX_NUMBERS_ORDERED - DELTA_ALMOST_FULL) {
-                System.out.println("Warning: The cart is almost full.");
-            }
+//            if (qtyOrdered >= MAX_NUMBERS_ORDERED - DELTA_ALMOST_FULL) {
+//                System.out.println("Warning: The cart is almost full.");
+//            }
         } else {
             System.out.println("The cart is full. Cannot add more items.");
+            throw new LimitExceededException("Error: The number of ordered items has exceeded the limit of " + MAX_NUMBERS_ORDERED + ".");
         }
     }
 
@@ -87,6 +88,16 @@ public class Cart {
             System.out.println("Cannot find any items in cart with title: " + title);
     }
 
+    public ObservableList<Media> searchByTitleToList(String title) {
+        ObservableList<Media> result = FXCollections.observableArrayList();
+        for (int i = 0; i < qtyOrdered; i++) {
+            if (itemsOrdered.get(i).getTitle().toLowerCase().contains(title.toLowerCase())) {
+                result.add(itemsOrdered.get(i));
+            }
+        }
+        return result;
+    }
+
     public void sortByTitleCost() {
         itemsOrdered.sort(COMPARE_BY_TITLE_COST);
     }
@@ -100,4 +111,7 @@ public class Cart {
     }
 
 
+    public void placeOrder() {
+        throw new UnsupportedOperationException("Place order functionality is not implemented yet.");
+    }
 }
